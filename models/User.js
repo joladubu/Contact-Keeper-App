@@ -12,7 +12,7 @@ const UserSchema = mongoose.Schema({
   },
   password: {
     type: String,
-    required: true
+    required: true // puts the current date and time in the field automatically
   },
 date: {
     type: Date,
@@ -21,3 +21,4 @@ date: {
 })
 
 module.exports = mongoose.model('user', UserSchema);
+ 
