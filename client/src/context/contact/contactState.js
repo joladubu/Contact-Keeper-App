@@ -41,7 +41,8 @@ const ContactState = props => {
         phone: '444-999-999',
         type: 'professional'
       }
-    ]
+    ], 
+    current: null
   };
 
     // Pulling out the State and dispatch from the reducer using the useReducer hook
@@ -61,10 +62,19 @@ const ContactState = props => {
     }
 
     //Set Current Contact
+    const setCurrent = contact => {
+      dispatch({ type: SET_CURRENT, payload: contact })
+    }
 
     //Clear Current Contact
+    const clearCurrent = () => {
+      dispatch({ type: CLEAR_CURRENT });
+    }
 
     //Update Contact
+    const updateContact = contact => {
+      dispatch({ type: UPDATE_CONTACT, payload: contact })
+    }
 
     //Filter Contact
 
@@ -75,8 +85,12 @@ const ContactState = props => {
       // states and other actions to be accessed from other components need to be stated/ provided here
         value={{ 
           contacts: state.contacts,
+          current: state.current,
           addContact,
-          deleteContact
+          deleteContact,  
+          setCurrent,
+          clearCurrent, 
+          updateContact
          }}
       >
         {props.children}
